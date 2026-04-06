@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todo App - Gestión de Tareas
 
-## Getting Started
+## 1. Tipo de arquitectura
 
-First, run the development server:
+El proyecto tiene una arquitectura monolítica, ya que todo el sistema (frontend y backend) está dentro de una sola aplicación en Next.js.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Sin embargo, internamente está organizado por secciones, separando la interfaz de usuario, la lógica del backend y el acceso a la base de datos.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Esto permite mantener cierto orden aunque todo esté en un mismo proyecto.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 2. Módulos o componentes
 
-## Learn More
+En el proyecto se identifican los siguientes componentes:
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
+- Componente principal `TodoApp`
+- Componentes de interfaz de SHADCN como botones, tarjetas, inputs, etc.
+- Manejo de estado con React (useState, useEffect)
+- Consumo de la API mediante axios
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend
+- Endpoints que permiten:
+  - Listar tareas
+  - Crear tareas
+  - Actualizar tareas
+  - Eliminar tareas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Base de datos
+- Tabla `tasks`
+- Contiene campos como id, título, descripción, estado, prioridad y fechas
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 3. Mejoras propuestas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+El sistema funciona correctamente, pero se pueden hacer mejoras:
+
+- Usar enums en la base de datos para evitar errores en estados y prioridades
+- Mejorar la escalabilidad en caso de crecimiento del sistema
+- Integrar gestion de usuarios, para que puedan acceder a sus tareas
+
+---
